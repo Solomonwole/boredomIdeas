@@ -1,7 +1,7 @@
 import { Navigate, Outlet, useLocation } from "react-router-dom";
 
 export const RequireLoggedIn = () => {
-	const user = localStorage.getItem('IdeauserName');
+	const user = localStorage.getItem('BIdeauserName');
 	const location = useLocation();
 
 	return user !== null ? (

@@ -194,14 +194,17 @@ export const StyledAuthRight = styled.div`
   }
 `;
 
-
 export const StyledDashboard = styled.main`
-button {
-  width: 100%;
-  border-radius: 8px;
-  margin-top: 15px;
-}
-`
+  button {
+    width: 100%;
+    border-radius: 8px;
+    margin-top: 15px;
+    height: 50px;
+    box-shadow: -1px 5px 13px 0px rgba(0, 0, 0, 0.44);
+    -webkit-box-shadow: -1px 5px 13px 0px rgba(0, 0, 0, 0.44);
+    -moz-box-shadow: -1px 5px 13px 0px rgba(0, 0, 0, 0.44);
+  }
+`;
 // FONT STYLING
 
 export const StyledH1 = styled.h1`

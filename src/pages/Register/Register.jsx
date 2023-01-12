@@ -11,6 +11,7 @@ import boy from "../../assets/boy.png";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { Link } from "react-router-dom";
 import logo from "../../assets/logo.svg";
+import axios from "axios";
 
 const EMAIL_REGEX =
   /^(?![_.-])((?![_.-][_.-])[a-zA-Z\d_.-]){0,63}[a-zA-Z\d]@((?!-)((?!--)[a-zA-Z\d-]){0,63}[a-zA-Z\d]\.){1,2}([a-zA-Z]{2,14}\.)?[a-zA-Z]{2,14}$/;
@@ -57,7 +58,28 @@ function Register() {
     setTrySubmit(true);
     if (valid && !error) {
       setLoading(true);
-      setSucess(true);
+
+      try {
+        axios
+        .post('https://user-profile-api.onrender.com/register', {
+          uname: username,
+          email: email,
+          password: password
+        })
+        .then((response) => {
+          console.log(response.data);
+          setSucess(true);
+          setLoading(false);
+        })
+        .catch((error) => {
+          console.log(error);
+          setLoading(false);
+        });
+      } catch (error) {
+        console.log('The Error ',error);
+        setLoading(false);
+      }
+      
     } else {
     }
   };
