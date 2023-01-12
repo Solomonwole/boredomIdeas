@@ -150,7 +150,7 @@ export const StyledAuthLeft = styled.div`
   @media screen and (max-width: 820px) {
     width: 60%;
   }
-  @media screen and (max-width: 428px) {
+  @media screen and (max-width: 500px) {
     width: 100%;
     background: #fff;
     z-index: 2;
@@ -186,7 +186,7 @@ export const StyledAuthRight = styled.div`
   @media screen and (max-width: 820px) {
     width: 40%;
   }
-  @media screen and (max-width: 428px) {
+  @media screen and (max-width: 500px) {
     width: 100%;
     img {
       border-radius: 0;
