@@ -10,13 +10,16 @@ function RouterPage() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Home />} />
+       
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
-        <Route path="/dashboard" element={<Dashboard />} />
+       
 
         {/* PROTECTED ROUTE*/}
-        <Route element={<RequireLoggedIn />}></Route>
+        <Route element={<RequireLoggedIn />}>
+        <Route path="/" element={<Home />} />
+        <Route path="/dashboard" element={<Dashboard />} />
+        </Route>
       </Routes>
     </Router>
   );
