@@ -1,8 +1,11 @@
 import React from 'react'
 
 function Home() {
+ 
   return (
-    <div>Home Screen</div>
+    <div>
+     Home
+    </div>
   )
 }
 

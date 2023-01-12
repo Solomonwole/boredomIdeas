@@ -13,12 +13,12 @@ function RouterPage() {
        
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
-       
+        <Route path="/dashboard" element={<Dashboard />} />
 
         {/* PROTECTED ROUTE*/}
         <Route element={<RequireLoggedIn />}>
         <Route path="/" element={<Home />} />
-        <Route path="/dashboard" element={<Dashboard />} />
+        {/* <Route path="/dashboard" element={<Dashboard />} /> */}
         </Route>
       </Routes>
     </Router>

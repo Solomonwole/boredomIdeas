@@ -194,6 +194,14 @@ export const StyledAuthRight = styled.div`
   }
 `;
 
+
+export const StyledDashboard = styled.main`
+button {
+  width: 100%;
+  border-radius: 8px;
+  margin-top: 15px;
+}
+`
 // FONT STYLING
 
 export const StyledH1 = styled.h1`
