@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useState } from "react";
+import Header from "../../components/Header";
 import { PageLayout } from "../../layout/PageLayout";
 import { StyledDashboard, StyledH2 } from "../../styles/Styled";
 
@@ -24,6 +25,7 @@ function Dashboard() {
   if (!activity) {
     return (
       <PageLayout>
+        <Header />
         <StyledDashboard>
           <button onClick={generate}>
             {loading ? <div className="loader"></div> : "GENERATE"}
@@ -35,6 +37,7 @@ function Dashboard() {
 
   return (
     <PageLayout>
+      <Header />
       <StyledDashboard>
         <p>Category: {activity.type}</p>
         <p>Activity: {activity.activity}</p>

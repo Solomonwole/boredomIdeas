@@ -1,9 +1,13 @@
-import React from 'react'
+import React from "react";
+import { StyledHeader } from "../styles/Styled";
+import logo from "../assets/logo.svg";
 
 function Header() {
   return (
-    <div>Header</div>
-  )
+    <StyledHeader>
+      <img src={logo} alt="Boredom Ideas" />
+    </StyledHeader>
+  );
 }
 
-export default Header
+export default Header;

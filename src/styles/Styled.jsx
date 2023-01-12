@@ -194,10 +194,25 @@ export const StyledAuthRight = styled.div`
   }
 `;
 
+export const StyledHeader= styled.header`
+width: 100%;
+display: flex;
+justify-content: center;
+align-items: center;
+background: #fff;
+z-index: 30;
+
+padding: 8px 0;
+
+img{
+  width: 100px;
+}
+`
+
 export const StyledDashboard = styled.main`
 padding: 20px 0;
   button {
-    width: 100%;
+    width: 200px;
     border-radius: 8px;
     margin-top: 15px;
     height: 50px;
