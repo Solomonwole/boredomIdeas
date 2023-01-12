@@ -36,7 +36,7 @@ function Dashboard() {
   return (
     <PageLayout>
       <StyledDashboard>
-        <StyledH2>Category: {activity.type}</StyledH2>
+        <p>Category: {activity.type}</p>
         <p>Activity: {activity.activity}</p>
         <p>Participants: {activity.participants}</p>
         <button onClick={generate}>

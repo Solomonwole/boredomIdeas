@@ -195,6 +195,7 @@ export const StyledAuthRight = styled.div`
 `;
 
 export const StyledDashboard = styled.main`
+padding: 20px 0;
   button {
     width: 100%;
     border-radius: 8px;
