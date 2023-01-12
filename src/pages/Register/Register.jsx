@@ -61,25 +61,27 @@ function Register() {
 
       try {
         axios
-        .post('https://user-profile-api.onrender.com/register', {
-          uname: username,
-          email: email,
-          password: password
-        })
-        .then((response) => {
-          console.log(response.data);
-          setSucess(true);
-          setLoading(false);
-        })
-        .catch((error) => {
-          console.log(error);
-          setLoading(false);
-        });
+          .post(
+            "https://cors-anywhere.herokuapp.com/https://user-profile-api.onrender.com/register?uname=" +
+              username +
+              "&email=" +
+              email +
+              "&password=" +
+              password
+          )
+          .then((response) => {
+            console.log(response.data);
+            setSucess(true);
+            setLoading(false);
+          })
+          .catch((error) => {
+            console.log(error);
+            setLoading(false);
+          });
       } catch (error) {
-        console.log('The Error ',error);
+        console.log("The Error ", error);
         setLoading(false);
       }
-      
     } else {
     }
   };
@@ -95,7 +97,7 @@ function Register() {
               <div className="field">
                 <input
                   type="text"
-                  name="username"
+                  name="uname"
                   value={username}
                   onChange={handleUsername}
                   placeholder="Enter username"
@@ -176,7 +178,9 @@ function Register() {
             <img src={logo} alt="Boredom Ideas" className="logo" />
             <StyledH1>Account Created</StyledH1>
             <StyledP>Sign in to start generating ideas</StyledP>
-            <Link to='/login' className="good"><button >GO TO SIGN IN</button></Link>
+            <Link to="/login" className="good">
+              <button>GO TO SIGN IN</button>
+            </Link>
           </div>
         )}
       </StyledAuthLeft>
