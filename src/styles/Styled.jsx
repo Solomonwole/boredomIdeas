@@ -194,23 +194,51 @@ export const StyledAuthRight = styled.div`
   }
 `;
 
-export const StyledHeader= styled.header`
-width: 100%;
-display: flex;
-justify-content: center;
-align-items: center;
-background: #fff;
-z-index: 30;
+export const StyledHeader = styled.header`
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #fff;
+  z-index: 30;
 
-padding: 8px 0;
+  padding: 8px 0;
 
-img{
-  width: 100px;
-}
-`
+  img {
+    width: 100px;
+  }
 
+  .icon {
+    font-size: 30px;
+    color: rgb(35, 61, 255);
+    cursor: pointer;
+  }
+
+  button {
+    width: 100px;
+    border-radius: 8px;
+    margin-top: 15px;
+    height: 40px;
+  }
+`;
+export const StyledHome = styled.main`
+  height: 90vh;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+
+  button {
+    width: 200px;
+    border-radius: 8px;
+    margin-top: 15px;
+    height: 50px;
+  }
+`;
 export const StyledDashboard = styled.main`
-padding: 20px 0;
+  padding: 20px 0;
   button {
     width: 200px;
     border-radius: 8px;

@@ -4,21 +4,17 @@ import logo from "../assets/logo.svg";
 import { TbLogout } from "react-icons/tb";
 import { useNavigate } from "react-router-dom";
 
-function Header() {
+function HeaderC() {
   const navigate = useNavigate();
   return (
     <StyledHeader>
       <>&nbsp;</>
       <img src={logo} alt="Boredom Ideas" />
-      <TbLogout
-        className="icon"
-        onClick={() => {
-          localStorage.removeItem("user");
-          navigate("/login");
-        }}
-      />
+      <button onClick={()=> {
+        navigate("/register")
+      }}>REGISTER</button>
     </StyledHeader>
   );
 }
 
-export default Header;
+export default HeaderC;

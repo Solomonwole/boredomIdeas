@@ -5,20 +5,21 @@ import Home from "../pages/Home/Home";
 import Login from "../pages/Login/Login";
 import Register from "../pages/Register/Register";
 import { RequireLoggedIn } from "../utils/Protect";
+import { RedirectDashboard } from "../utils/ProtectCopy";
 
 function RouterPage() {
   return (
     <Router>
       <Routes>
-       
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/dashboard" element={<Dashboard />} />
+        <Route element={<RedirectDashboard />}>
+          <Route path="/" element={<Home />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+        </Route>
 
         {/* PROTECTED ROUTE*/}
         <Route element={<RequireLoggedIn />}>
-        <Route path="/" element={<Home />} />
-        {/* <Route path="/dashboard" element={<Dashboard />} /> */}
+          <Route path="/dashboard" element={<Dashboard />} />
         </Route>
       </Routes>
     </Router>

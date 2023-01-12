@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useState } from "react";
 import Header from "../../components/Header";
 import { PageLayout } from "../../layout/PageLayout";
-import { StyledDashboard, StyledH2 } from "../../styles/Styled";
+import { StyledDashboard, StyledH2, StyledH3 } from "../../styles/Styled";
 
 function Dashboard() {
   const [activity, setActivity] = useState(null);
@@ -11,15 +11,16 @@ function Dashboard() {
   const generate = () => {
     setLoading(true);
     axios
-      .get("https://www.boredapi.com/api/activity/")
-      .then((response) => {
-        setActivity(response.data);
-        setLoading(false);
-      })
-      .catch((error) => {
-        console.log(error);
-        setLoading(false);
-      });
+    .get("https://www.boredapi.com/api/activity/")
+    .then((response) => {
+      setActivity(response.data);
+      setLoading(false);
+    })
+    .catch((error) => {
+      console.log(error);
+      setLoading(false);
+     
+    });
   };
 
   if (!activity) {

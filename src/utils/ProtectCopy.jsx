@@ -1,12 +1,12 @@
 import { Navigate, Outlet, useLocation } from "react-router-dom";
 
-export const RequireLoggedIn = () => {
+export const RedirectDashboard = () => {
 	const user = localStorage.getItem('user');
 	const location = useLocation();
 
-	return user !== null ? (
+	return user === null ? (
 		<Outlet />
 	) : (
-		<Navigate to="/login" state={{ from: location }} replace={true} />
+		<Navigate to="/dashboard" state={{ from: location }} replace={true} />
 	);
 };
