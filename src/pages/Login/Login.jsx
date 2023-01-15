@@ -6,7 +6,7 @@ import {
   StyledH2,
   StyledP,
 } from "../../styles/Styled";
-import boy from "../../assets/boy.png";
+import boy from "../../assets/boy.webp";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { Link, useNavigate } from "react-router-dom";
 import logo from "../../assets/logo.svg";
@@ -69,7 +69,9 @@ function Login() {
     <StyledAuthLayout>
       <StyledAuthLeft>
         <div className="side">
-          <img src={logo} alt="Boredom Ideas" className="logo" />
+          <Link to="/">
+            <img src={logo} alt="Boredom Ideas" className="logo" />
+          </Link>{" "}
           <StyledH2>Sign in to your Account</StyledH2>
           <form onSubmit={handleLogin}>
             <label>Email</label>

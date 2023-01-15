@@ -1,5 +1,5 @@
 import React from "react";
-import { StyledHeader } from "../styles/Styled";
+import { StyledHeader2 } from "../styles/Styled";
 import logo from "../assets/logo.svg";
 import { TbLogout } from "react-icons/tb";
 import { useNavigate } from "react-router-dom";
@@ -7,13 +7,13 @@ import { useNavigate } from "react-router-dom";
 function HeaderC() {
   const navigate = useNavigate();
   return (
-    <StyledHeader>
+    <StyledHeader2>
       <>&nbsp;</>
       <img src={logo} alt="Boredom Ideas" />
-      <button onClick={()=> {
+      {/* <button onClick={()=> {
         navigate("/register")
-      }}>REGISTER</button>
-    </StyledHeader>
+      }}>REGISTER</button> */}
+    </StyledHeader2>
   );
 }
 

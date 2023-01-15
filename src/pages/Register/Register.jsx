@@ -7,7 +7,7 @@ import {
   StyledH2,
   StyledP,
 } from "../../styles/Styled";
-import boy from "../../assets/boy.png";
+import boy from "../../assets/boy.webp";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { Link } from "react-router-dom";
 import logo from "../../assets/logo.svg";
@@ -61,14 +61,11 @@ function Register() {
 
       try {
         axios
-          .post(
-            "https://cors-anywhere.herokuapp.com/https://user-profile-api.onrender.com/register?uname=" +
-              username +
-              "&email=" +
-              email +
-              "&password=" +
-              password
-          )
+          .post("https://user-profile-api.onrender.com/register", {
+            uname: username,
+            email: email,
+            password: password,
+          })
           .then((response) => {
             console.log(response.data);
             setSucess(true);
@@ -82,6 +79,30 @@ function Register() {
         console.log("The Error ", error);
         setLoading(false);
       }
+
+      // try {
+      //   axios
+      //     .post(
+      //       "https://cors-anywhere.herokuapp.com/https://user-profile-api.onrender.com/register?uname=" +
+      //         username +
+      //         "&email=" +
+      //         email +
+      //         "&password=" +
+      //         password
+      //     )
+      //     .then((response) => {
+      //       console.log(response.data);
+      //       setSucess(true);
+      //       setLoading(false);
+      //     })
+      //     .catch((error) => {
+      //       console.log(error);
+      //       setLoading(false);
+      //     });
+      // } catch (error) {
+      //   console.log("The Error ", error);
+      //   setLoading(false);
+      // }
     } else {
     }
   };
@@ -90,7 +111,9 @@ function Register() {
       <StyledAuthLeft>
         {!sucess && (
           <div className="side">
-            <img src={logo} alt="Boredom Ideas" className="logo" />
+            <Link to="/">
+              <img src={logo} alt="Boredom Ideas" className="logo" />
+            </Link>
             <StyledH2>Create an Account</StyledH2>
             <form onSubmit={handleLogin}>
               <label>Username</label>
