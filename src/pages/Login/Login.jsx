@@ -11,6 +11,7 @@ import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { Link, useNavigate } from "react-router-dom";
 import logo from "../../assets/logo.svg";
 import axios from "axios";
+import { TextField } from "@mui/material";
 
 const EMAIL_REGEX =
   /^(?![_.-])((?![_.-][_.-])[a-zA-Z\d_.-]){0,63}[a-zA-Z\d]@((?!-)((?!--)[a-zA-Z\d-]){0,63}[a-zA-Z\d]\.){1,2}([a-zA-Z]{2,14}\.)?[a-zA-Z]{2,14}$/;
@@ -39,28 +40,28 @@ function Login() {
 
     if (valid) {
       setLoading(true);
-      localStorage.setItem("user", "BIdeauserName");
+
       setLoading(false);
-      navigate("/dashboard");
-      // try {
-      //   axios
-      //   .post('http://127.0.0.1:5000/register', {
-      //     email: email,
-      //     password: password
-      //   })
-      //   .then((response) => {
-      //     console.log(response.data);
-      //     setLoading(false);
-      //     // navigate('/dashboard')
-      //   })
-      //   .catch((error) => {
-      //     console.log(error);
-      //     setLoading(false);
-      //   });
-      // } catch (error) {
-      //   console.log('The Error ',error);
-      //   setLoading(false);
-      // }
+      try {
+        axios
+          .post("https://user-profile-api.onrender.com/login", {
+            email: email,
+            password: password,
+          })
+          .then((response) => {
+            console.log("Data ", response.data);
+            setLoading(false);
+            localStorage.setItem("user", "BIdeauserName");
+            navigate("/dashboard");
+          })
+          .catch((error) => {
+            console.log(error);
+            setLoading(false);
+          });
+      } catch (error) {
+        console.log("The Error ", error);
+        setLoading(false);
+      }
     } else {
       setLoading(false);
     }
@@ -74,6 +75,16 @@ function Login() {
           </Link>{" "}
           <StyledH2>Sign in to your Account</StyledH2>
           <form onSubmit={handleLogin}>
+            {/* <TextField
+              id="outlined-basic"
+              label="Email address"
+              variant="outlined"
+              type="email"
+              value={email}
+              onChange={handleEmail}
+              required
+              disabled={loading && "disabled"}
+            /> */}
             <label>Email</label>
             <div className="field">
               <input

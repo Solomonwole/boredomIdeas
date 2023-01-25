@@ -12,14 +12,15 @@ import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { Link } from "react-router-dom";
 import logo from "../../assets/logo.svg";
 import axios from "axios";
+import { Alert, AlertTitle, Snackbar } from "@mui/material";
 
 const EMAIL_REGEX =
   /^(?![_.-])((?![_.-][_.-])[a-zA-Z\d_.-]){0,63}[a-zA-Z\d]@((?!-)((?!--)[a-zA-Z\d-]){0,63}[a-zA-Z\d]\.){1,2}([a-zA-Z]{2,14}\.)?[a-zA-Z]{2,14}$/;
 
 function Register() {
-  const [email, setEmail] = useState("");
+  const [emaill, setEmaill] = useState("");
   const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
+  const [passwordl, setPasswordl] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [showPass, setShowPass] = useState(false);
   const [showCPass, setShowCPass] = useState(false);
@@ -32,28 +33,28 @@ function Register() {
   const [sucess, setSucess] = useState(false);
 
   useEffect(() => {
-    EMAIL_REGEX.test(email) ? setValid(true) : setValid(false);
-    if (password !== confirmPassword) {
+    EMAIL_REGEX.test(emaill) ? setValid(true) : setValid(false);
+    if (passwordl !== confirmPassword) {
       setError(true);
     } else {
       setError(false);
     }
-  }, [email, password, confirmPassword]);
+  }, [emaill, passwordl, confirmPassword]);
 
   const handleEmail = (e) => {
-    setEmail(e.target.value);
+    setEmaill(e.target.value);
   };
   const handleUsername = (e) => {
     setUsername(e.target.value);
   };
   const handlePassword = (e) => {
-    setPassword(e.target.value);
+    setPasswordl(e.target.value);
   };
   const handleConfirmPassword = (e) => {
     setConfirmPassword(e.target.value);
   };
 
-  const handleLogin = (e) => {
+  const handleRegister = (e) => {
     e.preventDefault();
     setTrySubmit(true);
     if (valid && !error) {
@@ -63,49 +64,27 @@ function Register() {
         axios
           .post("https://user-profile-api.onrender.com/register", {
             uname: username,
-            email: email,
-            password: password,
+            email: emaill,
+            password: passwordl,
           })
           .then((response) => {
-            console.log(response.data);
+            console.log(response.status);
             setSucess(true);
             setLoading(false);
           })
           .catch((error) => {
             console.log(error);
             setLoading(false);
+            // alert("Error")
           });
       } catch (error) {
         console.log("The Error ", error);
         setLoading(false);
       }
-
-      // try {
-      //   axios
-      //     .post(
-      //       "https://cors-anywhere.herokuapp.com/https://user-profile-api.onrender.com/register?uname=" +
-      //         username +
-      //         "&email=" +
-      //         email +
-      //         "&password=" +
-      //         password
-      //     )
-      //     .then((response) => {
-      //       console.log(response.data);
-      //       setSucess(true);
-      //       setLoading(false);
-      //     })
-      //     .catch((error) => {
-      //       console.log(error);
-      //       setLoading(false);
-      //     });
-      // } catch (error) {
-      //   console.log("The Error ", error);
-      //   setLoading(false);
-      // }
     } else {
     }
   };
+
   return (
     <StyledAuthLayout>
       <StyledAuthLeft>
@@ -115,7 +94,7 @@ function Register() {
               <img src={logo} alt="Boredom Ideas" className="logo" />
             </Link>
             <StyledH2>Create an Account</StyledH2>
-            <form onSubmit={handleLogin}>
+            <form onSubmit={handleRegister} method="POST">
               <label>Username</label>
               <div className="field">
                 <input
@@ -132,7 +111,7 @@ function Register() {
                 <input
                   type="email"
                   name="email"
-                  value={email}
+                  value={emaill}
                   onChange={handleEmail}
                   placeholder="Enter email address"
                   required
@@ -143,8 +122,8 @@ function Register() {
               <div className="field">
                 <input
                   type={showPass ? "text" : "password"}
-                  name="email"
-                  value={password}
+                  name="password"
+                  value={passwordl}
                   onChange={handlePassword}
                   placeholder="Enter password"
                   required
@@ -165,7 +144,7 @@ function Register() {
               <div className={error && trySubmit ? "error" : "field"}>
                 <input
                   type={showCPass ? "text" : "password"}
-                  name="email"
+                  name="cpassword"
                   value={confirmPassword}
                   onChange={handleConfirmPassword}
                   placeholder="Confirm password"

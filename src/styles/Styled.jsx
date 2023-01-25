@@ -194,20 +194,6 @@ export const StyledAuthRight = styled.div`
   }
 `;
 
-export const StyledHeader2 = styled.header`
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: ##f7f7ff;
-  z-index: 30;
-
-  padding: 8px 0;
-
-  img {
-    width: 100px;
-  }
-`;
 
 export const StyledHomeBody = styled.main`
 height: 100vh;
@@ -379,6 +365,9 @@ export const StyledCircles = styled.div`
   }
 }
 `;
+
+// DASHBOARD
+
 export const StyledDashboard = styled.main`
   padding: 20px 0;
   button {
@@ -391,6 +380,63 @@ export const StyledDashboard = styled.main`
     -moz-box-shadow: -1px 5px 13px 0px rgba(0, 0, 0, 0.44);
   }
 `;
+
+export const NavigationContainer = styled.div`
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 10vh;
+  display: flex;
+  justify-content: space-between;
+  background-color: #F7F7FF;
+  padding: 10px;
+  box-shadow: -1px 5px 13px 0px rgba(0, 0, 0, 0.44);
+
+  .content{
+    display: flex;
+    align-items: center;
+  }
+`;
+
+export const ShareButtonContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  background-color: #233DFF;
+  color: #fff;
+  border-radius: 25px;
+  cursor: pointer;
+`;
+
+export const SharePopup = styled.div`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -100%);
+  width: 200px;
+  height: 200px;
+  background-color: #fff;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  padding: 20px;
+  display: flex;
+  flex-wrap: wrap;
+`;
+
+export const ShareOption = styled.div`
+  flex: 1;
+  text-align: center;
+  padding: 10px;
+  cursor: pointer;
+  &:hover {
+    background-color: #f1f1f1;
+  }
+`;
+
+// DASHBOARD
+
+
 // FONT STYLING
 
 export const StyledH1 = styled.h1`

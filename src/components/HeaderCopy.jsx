@@ -1,18 +1,30 @@
 import React from "react";
-import { StyledHeader2 } from "../styles/Styled";
+import { StyledHeader2 } from "../pages/Home/Styled/Styled";
 import logo from "../assets/logo.svg";
-import { TbLogout } from "react-icons/tb";
-import { useNavigate } from "react-router-dom";
+import { NavLink } from "react-router-dom";
+import { PageLayout } from "../layout/PageLayout";
 
 function HeaderC() {
-  const navigate = useNavigate();
   return (
     <StyledHeader2>
-      <>&nbsp;</>
-      <img src={logo} alt="Boredom Ideas" />
-      {/* <button onClick={()=> {
-        navigate("/register")
-      }}>REGISTER</button> */}
+      <PageLayout>
+        <header>
+        <img src={logo} alt="Boredom Ideas" />
+        <div className="navMenu">
+          <ul>
+            <li><NavLink to="/">Home</NavLink></li>
+            <li>
+              <NavLink to="/login">Login</NavLink>
+            </li>
+            <li>
+              <NavLink to="/register">
+                <button>REGISTER</button>
+              </NavLink>
+            </li>
+          </ul>
+        </div>
+        </header>
+      </PageLayout>
     </StyledHeader2>
   );
 }
