@@ -58,8 +58,9 @@ function Dashboard() {
                   {loading ? <div className="loader"></div> : "GENERATE IDEA"}
                 </button>
               </>
-
-              <></>
+            </DashLeft>
+            <DashLeft>
+              
             </DashLeft>
           </StyledDashboard>
         </PageLayout>
