@@ -1,6 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Dashboard from "../pages/Dashboard/Dashboard";
+import Donate from "../pages/Donate/Donate";
 import Home from "../pages/Home/Home";
 import Login from "../pages/Login/Login";
 import Register from "../pages/Register/Register";
@@ -16,7 +17,7 @@ function RouterPage() {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
         </Route>
-
+        <Route path="/donate" element={<Donate />} />
         {/* PROTECTED ROUTE*/}
         <Route element={<RequireLoggedIn />}>
           <Route path="/dashboard" element={<Dashboard />} />

@@ -25,6 +25,7 @@ function Login() {
   const [valid, setValid] = useState(false);
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     EMAIL_REGEX.test(email) ? setValid(true) : setValid(false);
   }, [email]);
 
@@ -40,8 +41,6 @@ function Login() {
 
     if (valid) {
       setLoading(true);
-
-      setLoading(false);
       try {
         axios
           .post("https://user-profile-api.onrender.com/login", {
@@ -75,17 +74,7 @@ function Login() {
           </Link>{" "}
           <StyledH2>Sign in to your Account</StyledH2>
           <form onSubmit={handleLogin}>
-            {/* <TextField
-              id="outlined-basic"
-              label="Email address"
-              variant="outlined"
-              type="email"
-              value={email}
-              onChange={handleEmail}
-              required
-              disabled={loading && "disabled"}
-            /> */}
-            <label>Email</label>
+            {/* <label>Email</label> */}
             <div className="field">
               <input
                 type="email"
@@ -97,7 +86,7 @@ function Login() {
                 disabled={loading && "disabled"}
               />
             </div>
-            <label>Password</label>
+            {/* <label>Password</label> */}
             <div className="field">
               <input
                 type={showPass ? "text" : "password"}
@@ -132,6 +121,7 @@ function Login() {
           </div>
         </div>
       </StyledAuthLeft>
+
       <StyledAuthRight>
         <img src={boy} alt="" />
       </StyledAuthRight>

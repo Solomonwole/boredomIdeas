@@ -8,35 +8,13 @@ import {
   ShareOption,
   SharePopup,
   StyledDashboard,
-  StyledH2,
-  StyledH3,
   StyledP,
 } from "../../styles/Styled";
+import { StyledSection } from "../Home/Styled/Styled";
 
 function Dashboard() {
   const [activity, setActivity] = useState(null);
   const [loading, setLoading] = useState(false);
-  const [showPopup, setShowPopup] = useState(false);
-
-
-  const handleShare = (platform) => {
-    let message = "I am enjoying generating ideas on this website, try it out https://boredomideas.vercel.app";
-    let shareUrl = "";
-    switch (platform) {
-      case "facebook":
-        shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(message)}`;
-        break;
-      case "twitter":
-        shareUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(message)}`;
-        break;
-      case "linkedin":
-        shareUrl = `https://www.linkedin.com/shareArticle?mini=true&url=&title=&summary=${encodeURIComponent(message)}&source=`;
-        break;
-      default:
-        break;
-    }
-    window.open(shareUrl, "_blank");
-  };
 
   const logout = () => {
     axios
@@ -65,81 +43,29 @@ function Dashboard() {
       });
   };
 
-  if (!activity) {
-    return (
-      <>
-        <PageLayout>
-          <Header />
-          <StyledDashboard>
-            <button onClick={generate}>
-              {loading ? <div className="loader"></div> : "GENERATE"}
-            </button>
-          </StyledDashboard>
-        </PageLayout>
-        <NavigationContainer>
-          <PageLayout>
-          <div className="content">
-            <p>Share to friends </p>
-            <ShareButtonContainer onClick={() => setShowPopup(!showPopup)}>Share</ShareButtonContainer>
-          </div>
-
-
-          {showPopup && (
-        <SharePopup>
-          <ShareOption onClick={() => handleShare("facebook")}>
-            Facebook
-          </ShareOption>
-          <ShareOption onClick={() => handleShare("twitter")}>
-            Twitter
-          </ShareOption>
-          <ShareOption onClick={() => handleShare("linkedin")}>
-            LinkedIn
-          </ShareOption>
-        </SharePopup>
-      )}
-          </PageLayout>
-        </NavigationContainer>
-      </>
-    );
-  }
-
   return (
     <>
+      <StyledSection color ></StyledSection>
+
       <PageLayout>
         <Header />
         <StyledDashboard>
-          <StyledP>Category: {activity.type}</StyledP>
-          <StyledP>Activity: {activity.activity}</StyledP>
-          <StyledP>Participants: {activity.participants}</StyledP>
           <button onClick={generate}>
             {loading ? <div className="loader"></div> : "REGENERATE"}
           </button>
         </StyledDashboard>
       </PageLayout>
-      <NavigationContainer>
-        <PageLayout>
-          <div className="content">
-            <p>Share to friends </p>
-            <ShareButtonContainer onClick={() => setShowPopup(!showPopup)}>Share</ShareButtonContainer>
-          </div>
+      <button onClick={generate}>
+        {loading ? <div className="loader"></div> : "GENERATE"}
+      </button>
 
-
-
-          {showPopup && (
-        <SharePopup>
-          <ShareOption onClick={() => handleShare("facebook")}>
-            Facebook
-          </ShareOption>
-          <ShareOption onClick={() => handleShare("twitter")}>
-            Twitter
-          </ShareOption>
-          <ShareOption onClick={() => handleShare("linkedin")}>
-            LinkedIn
-          </ShareOption>
-        </SharePopup>
+      {activity && (
+        <>
+          <StyledP>Category: {activity.type}</StyledP>
+          <StyledP>Activity: {activity.activity}</StyledP>
+          <StyledP>Participants: {activity.participants}</StyledP>
+        </>
       )}
-        </PageLayout>
-      </NavigationContainer>
     </>
   );
 }

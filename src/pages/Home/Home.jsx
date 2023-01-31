@@ -1,74 +1,185 @@
-import React from "react";
-import HeaderC from "../../components/HeaderCopy";
+import React, { useEffect, useState } from "react";
 import { PageLayout } from "../../layout/PageLayout";
-import { StyledCircles, StyledH1 } from "../../styles/Styled";
-import bulb from "../../assets/bulb.svg";
-import CLeft from "../../assets/circles/c_left.svg";
-import CLeftBig from "../../assets/circles/c_left_big.svg";
-import CRight from "../../assets/circles/c_right.svg";
-import { StyledBG, StyledHomeHero, StyledSection } from "./Styled/Styled";
-import bgVid from "../../assets/bg.mp4";
-import poster from "../../assets/bg.webp";
-import { Link } from "react-router-dom";
+import {
+  Curve,
+  DotFrame,
+  FooterBG,
+  Oval,
+  Stats,
+  StyledHomeHero,
+  StyledSection,
+  Triangle,
+} from "./Styled/Styled";
+import HeaderHeader from "../../components/HomeHeader";
+import axios from "axios";
+import curveImg from "../../assets/curve.webp";
+import ovalImg from "../../assets/Oval.webp";
+import dotImg from "../../assets/DotFrame.webp";
+import triImg from "../../assets/Triangle.webp";
+import { BsFacebook, BsInstagram, BsTwitter } from "react-icons/bs";
+import { HiLightBulb, HiStar, HiUsers } from "react-icons/hi";
+import { Skeleton } from "@mui/material";
+import logo from "../../assets/logo.svg";
+import TestimonialCarousel from "../../components/Testimonial";
 
 function Home() {
+  const [activity, setActivity] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [generateCount, setGenerateCount] = useState(0);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  const generate = () => {
+    setGenerateCount(generateCount + 1);
+    if (generateCount === 20) {
+      localStorage.setItem("gen", 2);
+      // alert("You have reached the limit of 2 generated activities.");
+    }
+    if (localStorage.getItem("gen1")) {
+      alert("You have reached the limit");
+    } else {
+      setLoading(true);
+
+      axios
+        .get("https://www.boredapi.com/api/activity/")
+        .then((response) => {
+          setActivity(response.data);
+          setLoading(false);
+        })
+        .catch((error) => {
+          console.log(error);
+          setLoading(false);
+        });
+    }
+  };
+
+  // const remove = () => {
+  //   localStorage.removeItem("gen");
+  // };
+
   return (
     <>
-      <StyledBG>
-        <video loop autoPlay muted type="video/mp4" poster={poster}>
-          <source src={bgVid} type="video/mp4" />
-        </video>
-      </StyledBG>
       <StyledHomeHero>
-        <HeaderC />
         <PageLayout>
-          <div className="hero">
-            <StyledH1>Generate Activity Ideas When You Are Bored</StyledH1>
-          </div>
-
-          <StyledCircles>
-            <img src={CLeft} alt="" className="left" />
-            <img src={CLeftBig} alt="" className="leftBig" />
-            <img src={CRight} alt="" className="right" />
-            <img src={bulb} alt="" className="bulb" />
-          </StyledCircles>
+          <HeaderHeader />
         </PageLayout>
       </StyledHomeHero>
+
+      <StyledSection color top full>
+        <Curve>
+          <img src={curveImg} alt="" />
+        </Curve>
+        <DotFrame>
+          <img src={dotImg} alt="" />
+        </DotFrame>
+        <Oval>
+          <img src={ovalImg} alt="" />
+        </Oval>
+        <Triangle>
+          <img src={triImg} alt="" />
+        </Triangle>
+        <PageLayout>
+          <div className="left">
+            <h1>Discover the Best Fun and Exciting Activity Ideas</h1>
+            <p>
+              Never be Bored Again! Find Your Next Fun Adventure with Our
+              Ultimate List of Exciting Activities. Indulge in indoor or outdoor
+              thrills, romantic escapes, or daring escapades. Discover the best
+              activities and have a blast!
+            </p>
+            <button type="button" onClick={generate}>
+              {loading ? <div className="loader"></div> : "Generate an Idea"}
+            </button>
+          </div>
+          <div className="right">
+            {loading && (
+              <Skeleton variant="rectangular" width={210} height={60} />
+            )}
+            {activity ? (
+              <>
+                <p>Category: {activity.type}</p>
+                <p>Activity: {activity.activity}</p>
+                <p>Participants: {activity.participants}</p>
+              </>
+            ) : (
+              <></>
+            )}
+          </div>
+        </PageLayout>
+      </StyledSection>
+
       <StyledSection>
         <PageLayout>
-         <div className="about">
-         <div className="left"></div>
-          <div className="right">
-            <p>About App</p>
-            <h2>Lots of Amazing Fun Ideas To Choose From</h2>
-
-            <p className="text">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt
-              repudiandae quia sapiente reiciendis totam deleniti, accusamus
-              corporis id voluptatem natus deserunt tenetur ex distinctio dolore
-              iusto culpa adipisci minima fuga?
-            </p>
-            <div className="checkList">
-              <ul>
-                <li>User Friendly</li>
-                <li>User Friendly</li>
-              </ul>
-              <ul>
-                <li>User Friendly</li>
-                <li>User Friendly</li>
-              </ul>
+          <Stats>
+            <div className="stat">
+              <span>+200M</span>
+              <p className="set">
+                <HiUsers className="icon" />
+                &nbsp; Users
+              </p>
             </div>
-            <Link to="/login"><button>GET STARTED</button></Link>
-          </div>
-         </div>
+            <div className="borders"></div>
+            <div className="stat">
+              <span>+600M</span>
+              <p className="set">
+                <HiLightBulb className="icon" />
+                &nbsp; Generated Ideas
+              </p>
+            </div>
+            <div className="borders"></div>
+            <div className="stat">
+              <span>+80M</span>
+              <p className="set">
+                <HiStar className="star" />
+                &nbsp; Ratings
+              </p>
+            </div>
+          </Stats>
+
+          <TestimonialCarousel />
         </PageLayout>
       </StyledSection>
 
-      <StyledSection color>
+      
+
+      <FooterBG>
         <PageLayout>
+       <div className="logoImg">
+       <img src={logo} alt="" />
+       </div>
+          <div className="content">
+            <div className="socials">
           
+              <a href="https://facebook.com/#" target="_blank" rel="noreferrer">
+                <BsFacebook />
+              </a>
+              <a
+                href="https://instagram.com/#"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <BsInstagram />
+              </a>
+              <a href="https://twitter.com/#" target="_blank" rel="noreferrer">
+                <BsTwitter />
+              </a>
+            </div>
+            <p>
+              ©2023 Boredom Ideas, from{" "}
+              <a
+                href="https://hightech.com.ng"
+                target="_blank"
+                rel="noreferrer"
+              >
+                HIGHTECH
+              </a>{" "}
+              Inc.
+            </p>
+          </div>
         </PageLayout>
-      </StyledSection>
+      </FooterBG>
     </>
   );
 }

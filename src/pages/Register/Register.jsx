@@ -33,6 +33,7 @@ function Register() {
   const [sucess, setSucess] = useState(false);
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     EMAIL_REGEX.test(emaill) ? setValid(true) : setValid(false);
     if (passwordl !== confirmPassword) {
       setError(true);
@@ -59,7 +60,6 @@ function Register() {
     setTrySubmit(true);
     if (valid && !error) {
       setLoading(true);
-
       try {
         axios
           .post("https://user-profile-api.onrender.com/register", {
@@ -95,7 +95,7 @@ function Register() {
             </Link>
             <StyledH2>Create an Account</StyledH2>
             <form onSubmit={handleRegister} method="POST">
-              <label>Username</label>
+              {/* <label>Username</label> */}
               <div className="field">
                 <input
                   type="text"
@@ -106,7 +106,7 @@ function Register() {
                   required
                 />
               </div>
-              <label>Email</label>
+              {/* <label>Email</label> */}
               <div className="field">
                 <input
                   type="email"
@@ -118,7 +118,7 @@ function Register() {
                 />
               </div>
 
-              <label>Password</label>
+              {/* <label>Password</label> */}
               <div className="field">
                 <input
                   type={showPass ? "text" : "password"}
@@ -140,7 +140,7 @@ function Register() {
                   />
                 )}
               </div>
-              <label>Confirm Password</label>
+              {/* <label>Confirm Password</label> */}
               <div className={error && trySubmit ? "error" : "field"}>
                 <input
                   type={showCPass ? "text" : "password"}

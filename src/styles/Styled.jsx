@@ -6,12 +6,14 @@ export const StyledAuthLeft = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+
   .side {
     width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    overflow-x: hidden;
 
     .logo {
       width: 150px;
@@ -30,6 +32,7 @@ export const StyledAuthLeft = styled.div`
     display: flex;
     flex-direction: column;
     margin-top: 25px;
+    overflow-x: hidden;
 
     label {
       font-size: 13px;
@@ -51,7 +54,7 @@ export const StyledAuthLeft = styled.div`
       input {
         border: none;
         background: transparent;
-        height: 30px;
+        height: 60px;
         width: 80%;
 
         &:-webkit-autofill,
@@ -87,7 +90,7 @@ export const StyledAuthLeft = styled.div`
 
   .field {
     width: 100%;
-    height: 40px;
+    height: 60px;
     background: #f7f7f7;
     border-radius: 8px;
     display: flex;
@@ -95,13 +98,14 @@ export const StyledAuthLeft = styled.div`
     align-items: center;
     padding: 15px 15px;
     margin-bottom: 15px;
+    // overflow-x: hidden;
 
     input {
       border: none;
       background: transparent;
       height: 30px;
       width: 80%;
-
+      font-size: 15px;
       &:-webkit-autofill,
       input:-webkit-autofill:hover,
       input:-webkit-autofill:focus,
@@ -130,6 +134,9 @@ export const StyledAuthLeft = styled.div`
     width: 100%;
     border-radius: 8px;
     margin-top: 15px;
+    height: 60px;
+    font-size: 15px;
+    font-weight: 600;
   }
 
   .below {
@@ -194,7 +201,6 @@ export const StyledAuthRight = styled.div`
   }
 `;
 
-
 export const StyledHomeBody = styled.main`
 height: 100vh;
 w
@@ -228,142 +234,20 @@ export const StyledHeader = styled.header`
 `;
 export const StyledHome = styled.main`
   height: 100vh;
-
   background: #f7f7ff;
 
-  button {
-    width: 200px;
-    border-radius: 8px;
-    margin-top: 15px;
-    height: 50px;
-  }
+  // button {
+  //   width: 200px;
+  //   border-radius: 8px;
+  //   margin-top: 15px;
+  //   height: 50px;
+  // }
 
-  .hero {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
-   
-
-    .right {
-      img {
-        width: 570px;
-        // box-shadow: 0 5px 15px 0px rgba(0, 0, 0, 0.6);
-        transform: translatey(0px);
-        animation: float 6s ease-in-out infinite;
-
-        @keyframes float {
-          0% {
-            // box-shadow: 0 5px 15px 0px rgba(0, 0, 0, 0.6);
-            transform: translatey(0px);
-          }
-          50% {
-            // box-shadow: 0 25px 15px 0px rgba(0, 0, 0, 0.2);
-            transform: translatey(-20px);
-          }
-          100% {
-            // box-shadow: 0 5px 15px 0px rgba(0, 0, 0, 0.6);
-            transform: translatey(0px);
-          }
-        }
-      }
-    }
-  }
-`;
-export const StyledCircles = styled.div`
-.bulb {
-  position: absolute;
-  left: 200px;
-  top: 50px;
-  width: 300px;
-
-  transform: translatey(0px);
-  animation: float 2s ease-in-out infinite;
-
-  @keyframes float {
-    0% {
-      // box-shadow: 0 5px 15px 0px rgba(0, 0, 0, 0.6);
-      transform: translatey(0px);
-    }
-    50% {
-      // box-shadow: 0 25px 15px 0px rgba(0, 0, 0, 0.2);
-      transform: translatey(-20px);
-    }
-    100% {
-      // box-shadow: 0 5px 15px 0px rgba(0, 0, 0, 0.6);
-      transform: translatey(0px);
-    }
-  }
-}
-.right {
-  position: absolute;
-  left: 1200px;
-  top: 120px;
-
-  transform: translatey(0px);
-  animation: float 6s ease-in-out infinite;
-
-  @keyframes float {
-    0% {
-      // box-shadow: 0 5px 15px 0px rgba(0, 0, 0, 0.6);
-      transform: translatey(0px);
-    }
-    50% {
-      // box-shadow: 0 25px 15px 0px rgba(0, 0, 0, 0.2);
-      transform: translatey(-20px);
-    }
-    100% {
-      // box-shadow: 0 5px 15px 0px rgba(0, 0, 0, 0.6);
-      transform: translatey(0px);
-    }
-  }
-}
-.leftBig {
-  position: absolute;
-  left: 0;
-  top: 180px;
-
-  transform: translatey(0px);
-  animation: float 6s ease-in-out infinite;
-
-  @keyframes float {
-    0% {
-      // box-shadow: 0 5px 15px 0px rgba(0, 0, 0, 0.6);
-      transform: translatey(0px);
-    }
-    50% {
-      // box-shadow: 0 25px 15px 0px rgba(0, 0, 0, 0.2);
-      transform: translatey(-20px);
-    }
-    100% {
-      // box-shadow: 0 5px 15px 0px rgba(0, 0, 0, 0.6);
-      transform: translatey(0px);
-    }
-  }
-}
-.left {
-  position: absolute;
-  left: 250px;
-  top: 550px;
-
-  transform: translatey(0px);
-  animation: float 6s ease-in-out infinite;
-
-  @keyframes float {
-    0% {
-      // box-shadow: 0 5px 15px 0px rgba(0, 0, 0, 0.6);
-      transform: translatey(0px);
-    }
-    50% {
-      // box-shadow: 0 25px 15px 0px rgba(0, 0, 0, 0.2);
-      transform: translatey(-20px);
-    }
-    100% {
-      // box-shadow: 0 5px 15px 0px rgba(0, 0, 0, 0.6);
-      transform: translatey(0px);
-    }
-  }
-}
+  // .hero {
+  //   display: flex;
+  //   justify-content: space-between;
+  //   align-items: center;
+  // }
 `;
 
 // DASHBOARD
@@ -388,11 +272,11 @@ export const NavigationContainer = styled.div`
   height: 10vh;
   display: flex;
   justify-content: space-between;
-  background-color: #F7F7FF;
+  background-color: #f7f7ff;
   padding: 10px;
   box-shadow: -1px 5px 13px 0px rgba(0, 0, 0, 0.44);
 
-  .content{
+  .content {
     display: flex;
     align-items: center;
   }
@@ -404,7 +288,7 @@ export const ShareButtonContainer = styled.div`
   justify-content: center;
   width: 50px;
   height: 50px;
-  background-color: #233DFF;
+  background-color: #233dff;
   color: #fff;
   border-radius: 25px;
   cursor: pointer;
@@ -435,7 +319,6 @@ export const ShareOption = styled.div`
 `;
 
 // DASHBOARD
-
 
 // FONT STYLING
 

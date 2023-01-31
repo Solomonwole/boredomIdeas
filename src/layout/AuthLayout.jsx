@@ -9,6 +9,7 @@ export const StyledAuthLayout = styled.div`
   overflow: hidden;
   @media screen and (min-width: 500px){
     height: 100vh;
+    overflow: hidden;
   }
   @media screen and (max-width: 500px){
     overflow-y: scroll;
