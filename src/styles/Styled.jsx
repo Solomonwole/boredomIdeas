@@ -98,7 +98,6 @@ export const StyledAuthLeft = styled.div`
     align-items: center;
     padding: 15px 15px;
     margin-bottom: 15px;
-    // overflow-x: hidden;
 
     input {
       border: none;
@@ -259,9 +258,11 @@ export const StyledDashboard = styled.main`
     border-radius: 8px;
     margin-top: 15px;
     height: 50px;
-    box-shadow: -1px 5px 13px 0px rgba(0, 0, 0, 0.44);
-    -webkit-box-shadow: -1px 5px 13px 0px rgba(0, 0, 0, 0.44);
-    -moz-box-shadow: -1px 5px 13px 0px rgba(0, 0, 0, 0.44);
+    font-size: 15px;
+    font-weight: 600;
+    box-shadow: -1px 5px 13px 0px rgba(35, 61, 255, 0.75);
+    -webkit-box-shadow: -1px 5px 13px 0px rgba(35, 61, 255, 0.75);
+    -moz-box-shadow: -1px 5px 13px 0px rgba(35, 61, 255, 0.75);
   }
 `;
 

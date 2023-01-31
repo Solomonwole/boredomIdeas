@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { PageLayout } from "../../layout/PageLayout";
 import {
+  Action,
   Curve,
   DotFrame,
   FooterBG,
@@ -21,6 +22,7 @@ import { HiLightBulb, HiStar, HiUsers } from "react-icons/hi";
 import { Skeleton } from "@mui/material";
 import logo from "../../assets/logo.svg";
 import TestimonialCarousel from "../../components/Testimonial";
+import { Link } from "react-router-dom";
 
 function Home() {
   const [activity, setActivity] = useState(null);
@@ -139,19 +141,23 @@ function Home() {
           </Stats>
 
           <TestimonialCarousel />
+
+          <Action>
+            <span>Generate Unlimited Activity Ideas from Your Dashboard</span>
+            <Link to="/login">
+              <button>GET STARTED</button>
+            </Link>
+          </Action>
         </PageLayout>
       </StyledSection>
 
-      
-
       <FooterBG>
         <PageLayout>
-       <div className="logoImg">
-       <img src={logo} alt="" />
-       </div>
+          <div className="logoImg">
+            <img src={logo} alt="" />
+          </div>
           <div className="content">
             <div className="socials">
-          
               <a href="https://facebook.com/#" target="_blank" rel="noreferrer">
                 <BsFacebook />
               </a>

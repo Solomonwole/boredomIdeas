@@ -134,6 +134,7 @@ export const FooterBG = styled.footer`
   align-items: center;
   flex-direction: column;
   justify-content: center;
+  border-radius: 20px 20px 0 0;
 
   .logoImg {
     width: 100%;
@@ -195,6 +196,54 @@ export const Triangle = styled.div`
   //   }
   // }
 `;
+export const Action = styled.div`
+  width: 100%;
+  height: 300px;
+  box-shadow: 2px 0px 85px 3px rgba(35, 61, 255, 0.75);
+  -webkit-box-shadow: 2px 0px 85px 3px rgba(35, 61, 255, 0.75);
+  -moz-box-shadow: 2px 0px 85px 3px rgba(35, 61, 255, 0.75);
+  background: rgba(35, 61, 255, 0.5);
+  padding: 20px;
+  border-radius: 50px;
+  margin-top: 50px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  span{
+    text-align: center;
+    font-size: 24px;
+    font-weight: 600;
+  }
+
+  button{
+    margin-top: 30px;
+    height: 60px;
+    border-radius: 50px;
+    padding: 0 90px;
+    font-size: 15px;
+    font-weight: 600;
+  }
+`;
+
+// DASHBOARD 
+
+export const DashLeft = styled.div`
+width: 100%;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+margin-bottom: 50px;
+
+  h2{
+    text-align: center;
+    font-size: 25px;
+    font-weight: 600;
+  }
+`
 
 // HEADER NAVIGATION
 export const StyledHeader2 = styled.header`
@@ -341,5 +390,8 @@ export const MobileMenu = styled.nav`
     padding: 10px;
     border-radius: 10px;
     margin-top: 10px;
+  }
+  .log {
+    color: #c10000;
   }
 `;

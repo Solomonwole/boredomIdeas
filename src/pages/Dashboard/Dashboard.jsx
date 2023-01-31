@@ -10,7 +10,7 @@ import {
   StyledDashboard,
   StyledP,
 } from "../../styles/Styled";
-import { StyledSection } from "../Home/Styled/Styled";
+import { DashLeft, StyledSection } from "../Home/Styled/Styled";
 
 function Dashboard() {
   const [activity, setActivity] = useState(null);
@@ -45,7 +45,25 @@ function Dashboard() {
 
   return (
     <>
-      <StyledSection color ></StyledSection>
+      <StyledSection color top>
+        <PageLayout>
+          <StyledDashboard>
+            <DashLeft>
+              <>
+                <h2>
+                  Let's Get Started, <br />
+                  Shall we?
+                </h2>
+                <button onClick={generate}>
+                  {loading ? <div className="loader"></div> : "GENERATE IDEA"}
+                </button>
+              </>
+
+              <></>
+            </DashLeft>
+          </StyledDashboard>
+        </PageLayout>
+      </StyledSection>
 
       <PageLayout>
         <Header />
@@ -55,9 +73,7 @@ function Dashboard() {
           </button>
         </StyledDashboard>
       </PageLayout>
-      <button onClick={generate}>
-        {loading ? <div className="loader"></div> : "GENERATE"}
-      </button>
+      
 
       {activity && (
         <>

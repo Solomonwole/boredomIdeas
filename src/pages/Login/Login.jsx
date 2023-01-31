@@ -12,6 +12,7 @@ import { Link, useNavigate } from "react-router-dom";
 import logo from "../../assets/logo.svg";
 import axios from "axios";
 import { TextField } from "@mui/material";
+import { ToastContainer, toast } from 'react-toastify';
 
 const EMAIL_REGEX =
   /^(?![_.-])((?![_.-][_.-])[a-zA-Z\d_.-]){0,63}[a-zA-Z\d]@((?!-)((?!--)[a-zA-Z\d-]){0,63}[a-zA-Z\d]\.){1,2}([a-zA-Z]{2,14}\.)?[a-zA-Z]{2,14}$/;
@@ -125,6 +126,7 @@ function Login() {
       <StyledAuthRight>
         <img src={boy} alt="" />
       </StyledAuthRight>
+      <ToastContainer />
     </StyledAuthLayout>
   );
 }

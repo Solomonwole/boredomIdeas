@@ -8,7 +8,7 @@ import { PageLayout } from "../layout/PageLayout";
 import { HiOutlineMenuAlt3 } from "react-icons/hi";
 import { IoClose } from "react-icons/io5";
 import styled from "styled-components";
-import { MdDashboard } from "react-icons/md"
+import { MdDashboard } from "react-icons/md";
 
 function Header() {
   const navigate = useNavigate();
@@ -65,19 +65,20 @@ function Header() {
             <ul>
               <li>
                 <NavLink to="/dashboard">
-                  <MenuItems><MdDashboard /> &nbsp;Dashboard</MenuItems>
+                  <MenuItems>
+                    <MdDashboard /> &nbsp;Dashboard
+                  </MenuItems>
                 </NavLink>
               </li>
               <li>
-                <MenuItems>
-                  <TbLogout
-                    className="icon log"
-                    onClick={() => {
-                      localStorage.removeItem("user");
-                      navigate("/login");
-                    }}
-                  />{" "}
-                  &nbsp;Logout
+                <MenuItems
+                  onClick={() => {
+                    localStorage.removeItem("user");
+                    navigate("/login");
+                  }}
+                >
+                  <TbLogout className="icon log" />
+                  &nbsp;<span className="log" >Logout</span>
                 </MenuItems>
               </li>
             </ul>
@@ -97,9 +98,7 @@ const MenuItems = styled.div`
   font-weight: 600;
   margin: 10px 0;
 
-  .log{
-    color: #c10000;
-  }
+  
 `;
 const Button = styled.button`
   display: flex;
