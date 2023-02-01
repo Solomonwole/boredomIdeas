@@ -110,7 +110,7 @@ function Register() {
               {/* <label>Email</label> */}
               <div className="field">
                 <input
-                  type="email"
+                  type="text"
                   name="email"
                   value={emaill}
                   onChange={handleEmail}
