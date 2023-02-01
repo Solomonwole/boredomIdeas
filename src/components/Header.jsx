@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { StyledHeader } from "../styles/Styled";
 import logo from "../assets/logo.svg";
 import { TbLogout } from "react-icons/tb";
 import { NavLink, useNavigate } from "react-router-dom";

@@ -12,8 +12,12 @@ import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { Link } from "react-router-dom";
 import logo from "../../assets/logo.svg";
 import axios from "axios";
-import { Alert, AlertTitle, Snackbar } from "@mui/material";
-import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer, toast } from "react-toastify";
+import { auth } from "../../firebase/Firebase";
+import {
+  createUserWithEmailAndPassword,
+  updateProfile,
+} from 'firebase/auth';
 
 const EMAIL_REGEX =
   /^(?![_.-])((?![_.-][_.-])[a-zA-Z\d_.-]){0,63}[a-zA-Z\d]@((?!-)((?!--)[a-zA-Z\d-]){0,63}[a-zA-Z\d]\.){1,2}([a-zA-Z]{2,14}\.)?[a-zA-Z]{2,14}$/;
@@ -56,28 +60,46 @@ function Register() {
     setConfirmPassword(e.target.value);
   };
 
-  const handleRegister = (e) => {
+  const handleRegister = async (e) => {
     e.preventDefault();
     setTrySubmit(true);
     if (valid && !error) {
       setLoading(true);
       try {
-        axios
-          .post("https://user-profile-api.onrender.com/register", {
-            uname: username,
-            email: emaill,
-            password: passwordl,
-          })
+        await createUserWithEmailAndPassword(
+          auth,
+          emaill,
+          passwordl
+        )
           .then((response) => {
-            console.log(response.status);
+            updateProfile(auth.currentUser, { displayName: username });
+            toast.success("Account Successfully Created!");
             setSucess(true);
             setLoading(false);
           })
           .catch((error) => {
             console.log(error);
             setLoading(false);
-            // alert("Error")
           });
+
+        // axios
+        //   .post("https://user-profile-api.onrender.com/register", {
+        //     uname: username,
+        //     email: emaill,
+        //     password: passwordl,
+        //   })
+        //   .then((response) => {
+        //     console.log(response.status);
+        //     setSucess(true);
+        //     setLoading(false);
+        //   })
+        //   .catch((error) => {
+        //     console.log(error);
+        //     setLoading(false);
+        //     toast.error(error.message);
+        //   });
+
+        setLoading(false);
       } catch (error) {
         console.log("The Error ", error);
         setLoading(false);

@@ -11,8 +11,9 @@ import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { Link, useNavigate } from "react-router-dom";
 import logo from "../../assets/logo.svg";
 import axios from "axios";
-import { TextField } from "@mui/material";
-import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer, toast } from "react-toastify";
+import { auth } from "../../firebase/Firebase";
+import { signInWithEmailAndPassword } from "firebase/auth";
 
 const EMAIL_REGEX =
   /^(?![_.-])((?![_.-][_.-])[a-zA-Z\d_.-]){0,63}[a-zA-Z\d]@((?!-)((?!--)[a-zA-Z\d-]){0,63}[a-zA-Z\d]\.){1,2}([a-zA-Z]{2,14}\.)?[a-zA-Z]{2,14}$/;
@@ -37,27 +38,42 @@ function Login() {
     setPassword(e.target.value);
   };
 
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
 
     if (valid) {
       setLoading(true);
       try {
-        axios
-          .post("https://user-profile-api.onrender.com/login", {
-            email: email,
-            password: password,
-          })
-          .then((response) => {
-            console.log("Data ", response.data);
+        await signInWithEmailAndPassword(auth, email, password)
+          .then(() => {
+            const user = auth.currentUser;
+            localStorage.setItem("uid", user.uid);
+            localStorage.setItem("email", user.email);
+            localStorage.setItem("username", user.displayName);
             setLoading(false);
-            localStorage.setItem("user", "BIdeauserName");
             navigate("/dashboard");
           })
           .catch((error) => {
             console.log(error);
             setLoading(false);
+            toast.error("Invalid email or password");
           });
+
+        // axios
+        //   .post("https://user-profile-api.onrender.com/login", {
+        //     email: email,
+        //     password: password,
+        //   })
+        //   .then((response) => {
+        //     console.log("Data ", response.data);
+        //     setLoading(false);
+        //     localStorage.setItem("user", "BIdeauserName");
+        //     navigate("/dashboard");
+        //   })
+        //   .catch((error) => {
+        //     console.log(error);
+        //     setLoading(false);
+        //   });
       } catch (error) {
         console.log("The Error ", error);
         setLoading(false);

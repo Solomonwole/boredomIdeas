@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { PageLayout } from "../../layout/PageLayout";
 import { ToastContainer, toast } from "react-toastify";
 import {
-  Action,
   ActivityGen,
   Ads,
   Curve,
@@ -30,7 +29,6 @@ import TestimonialCarousel from "../../components/Testimonial";
 import { Link } from "react-router-dom";
 import VerifyModal from "../../components/Modal";
 import styled from "styled-components";
-import { width } from "@mui/system";
 
 function Home() {
   const [activity, setActivity] = useState(null);

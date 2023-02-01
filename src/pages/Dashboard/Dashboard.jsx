@@ -26,9 +26,10 @@ import {
 function Dashboard() {
   const [activity, setActivity] = useState(null);
   const [loading, setLoading] = useState(false);
-  const [modal, setModal] = useState(true);
+  const [modal, setModal] = useState(false);
   const [generateCount, setGenerateCount] = useState(0);
   const text = "Share with your friends 😉";
+  const username = localStorage.getItem("username");
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -111,6 +112,8 @@ function Dashboard() {
             <DashLeft>
               {!activity ? (
                 <>
+                <h1>Hi, {username}</h1>
+                <br />
                   <h2>
                     Let's Get Started, <br />
                     Shall we?
