@@ -31,6 +31,7 @@ function Header() {
                       localStorage.removeItem("uid");
                       localStorage.removeItem("email");
                       localStorage.removeItem("username");
+                      localStorage.removeItem("gen");
                       navigate("/login");
                     }}
                   >
@@ -68,6 +69,7 @@ function Header() {
                       localStorage.removeItem("uid");
                       localStorage.removeItem("email");
                       localStorage.removeItem("username");
+                      localStorage.removeItem("gen");
                       navigate("/login");
                   }}
                 >
