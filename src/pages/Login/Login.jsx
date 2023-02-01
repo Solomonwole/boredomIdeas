@@ -10,7 +10,7 @@ import boy from "../../assets/boy.webp";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { Link, useNavigate } from "react-router-dom";
 import logo from "../../assets/logo.svg";
-import axios from "axios";
+// import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import { auth } from "../../firebase/Firebase";
 import { signInWithEmailAndPassword } from "firebase/auth";
@@ -125,6 +125,9 @@ function Login() {
                   className="icon"
                 />
               )}
+            </div>
+            <div className="forgot">
+            <Link to="/forgot">Forgot Password?</Link>
             </div>
             <div className="keep">
               <input type="checkbox" checked /> <label>Keep me logged in</label>

@@ -129,6 +129,15 @@ export const StyledAuthLeft = styled.div`
       margin-top: 2px;
     }
   }
+
+  .forgot{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    a{
+      color: rgb(92, 92, 225);
+    }
+  }
   button {
     width: 100%;
     border-radius: 8px;
