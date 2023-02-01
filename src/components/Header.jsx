@@ -8,24 +8,13 @@ import { HiOutlineMenuAlt3 } from "react-icons/hi";
 import { IoClose } from "react-icons/io5";
 import styled from "styled-components";
 import { MdDashboard } from "react-icons/md";
+import { auth } from "../firebase/Firebase";
 
 function Header() {
   const navigate = useNavigate();
   const [menu, setMenu] = useState(false);
   return (
     <>
-      {/* <StyledHeader>
-        <>&nbsp;</>
-        <img src={logo} alt="Boredom Ideas" />
-        <TbLogout
-          className="icon"
-          onClick={() => {
-            localStorage.removeItem("user");
-            navigate("/login");
-          }}
-        />
-      </StyledHeader> */}
-
       <StyledHeader2>
         <PageLayout>
           <header>
@@ -38,7 +27,10 @@ function Header() {
                 <li>
                   <Button
                     onClick={() => {
-                      localStorage.removeItem("user");
+                      auth.signOut();
+                      localStorage.removeItem("uid");
+                      localStorage.removeItem("email");
+                      localStorage.removeItem("username");
                       navigate("/login");
                     }}
                   >
@@ -72,8 +64,11 @@ function Header() {
               <li>
                 <MenuItems
                   onClick={() => {
-                    localStorage.removeItem("user");
-                    navigate("/login");
+                    auth.signOut();
+                      localStorage.removeItem("uid");
+                      localStorage.removeItem("email");
+                      localStorage.removeItem("username");
+                      navigate("/login");
                   }}
                 >
                   <TbLogout className="icon log" />
