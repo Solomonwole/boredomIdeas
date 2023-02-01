@@ -252,7 +252,7 @@ export const StyledHome = styled.main`
 // DASHBOARD
 
 export const StyledDashboard = styled.main`
-  padding: 20px 0;
+  padding: 40px 0;
   button {
     width: 200px;
     border-radius: 8px;

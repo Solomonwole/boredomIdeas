@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const StyledHomeHero = styled.header`
-  z-index: 5;
+  z-index: 35;
 
   .hero {
     height: 87vh;
@@ -14,22 +14,108 @@ export const StyledHomeHero = styled.header`
 `;
 export const StyledSection = styled.section`
   background: ${(props) => (props.color ? "rgba(35, 61, 255, 0.5)" : "#fff")};
-  height: ${(props) => (props.full ? "100vh" : "")};
-  height: ${(props) => (props.half ? "80vh" : "")};
+  min-height: ${(props) => (props.fulls ? "100vh" : "")};
   padding-top: ${(props) => (props.top ? "150px" : "50px")};
   padding-bottom: ${(props) => (props.top ? "0" : "50px")};
-  .left {
-    p {
-      margin: 15px 0;
+
+  .hero {
+    @media screen and (min-width: 937px) {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
     }
-    button {
-      border-radius: 30px;
-      font-weight: 600;
-      margin: 8px 0;
-      color: rgba(255, 255, 255, 0.9);
-      font-size: 16px;
-      height: 60px;
-      width: 205px;
+    .left {
+      p {
+        margin: 15px 0;
+      }
+      button {
+        border-radius: 30px;
+        font-weight: 600;
+        margin: 8px 0;
+        color: rgba(255, 255, 255, 0.9);
+        font-size: 16px;
+        height: 60px;
+        width: 205px;
+      }
+      @media screen and (min-width: 937px) {
+        width: 50%;
+      }
+    }
+
+    .right {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      img {
+        width: 250px;
+      }
+
+      @media screen and (min-width: 937px) {
+        justify-content: flex-start;
+        img {
+          margin-top: -20px;
+          width: 420px;
+        }
+      }
+    }
+  }
+
+  @media screen and (min-width: 937px) {
+    height: ${(props) => (props.full ? "100vh" : "")};
+  }
+`;
+
+
+export const ActivityGen = styled.div`
+  width: 100%;
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 20px;
+  padding: 0;
+  margin: ${(props) => props.don ? '' : '30px 0'};
+
+  .title {
+    width: 100%;
+    height: 45px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 600;
+  }
+  .answer {
+    width: 100%;
+    min-height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-transform: capitalize;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.5);
+    padding-bottom: 15px;
+    text-align: center;
+  }
+  .none {
+    border-bottom: none;
+  }
+
+  @media screen and (min-width: 937px) {
+    width: 450px;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    background: rgba(255, 255, 255, 0.5);
+
+    .title {
+      height: 55px;
+    }
+
+    .answer {
+      min-height: 50px;
+      border-bottom: 2px solid rgba(255, 255, 255, 0.5);
+      padding-left: 10px;
+      padding-right: 10px;
+      text-align: center;
+    }
+    .none {
+      border-bottom: none;
     }
   }
 `;
@@ -100,11 +186,10 @@ export const DotFrame = styled.div`
     width: 100px;
   }
 
-  // @media screen and (min-width: 600px){
-  //   img{
-  //     width: 600px;
-  //   }
-  // }
+  @media screen and (min-width: 937px) {
+    top: 500px;
+    left: 30px;
+  }
 `;
 export const Oval = styled.div`
   margin: 0;
@@ -118,12 +203,13 @@ export const Oval = styled.div`
   img {
     width: 50px;
   }
+  @media screen and (min-width: 600px) {
+    right: 100px;
+  }
 
-  // @media screen and (min-width: 600px) {
-  //   img {
-  //     width: 600px;
-  //   }
-  // }
+  @media screen and (min-width: 937px) {
+    right: 200px;
+  }
 `;
 export const FooterBG = styled.footer`
   position: relative;
@@ -212,13 +298,13 @@ export const Action = styled.div`
   justify-content: center;
   align-items: center;
 
-  span{
+  span {
     text-align: center;
     font-size: 24px;
     font-weight: 600;
   }
 
-  button{
+  button {
     margin-top: 30px;
     height: 60px;
     border-radius: 50px;
@@ -228,22 +314,22 @@ export const Action = styled.div`
   }
 `;
 
-// DASHBOARD 
+// DASHBOARD
 
 export const DashLeft = styled.div`
-width: 100%;
-display: flex;
-flex-direction: column;
-justify-content: center;
-align-items: center;
-margin-bottom: 50px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 50px;
 
-  h2{
+  h2 {
     text-align: center;
     font-size: 25px;
     font-weight: 600;
   }
-`
+`;
 
 // HEADER NAVIGATION
 export const StyledHeader2 = styled.header`
@@ -355,10 +441,10 @@ export const MobileMenu = styled.nav`
       transform: translateY(0%);
     }
   }
-
-  @media screen and (min-width: 1024px) {
+  @media screen and (min-width: 632px) {
     display: none;
   }
+  
 
   ul {
     margin-top: 40px;
@@ -393,5 +479,32 @@ export const MobileMenu = styled.nav`
   }
   .log {
     color: #c10000;
+  }
+ 
+`;
+
+// Ads Banner
+export const Ads = styled.div`
+  margin: ${(props) => (props.notop ? "" : "30px 0")};
+  margin-top: ${(props) => (props.notop ? "50px" : "")};
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: -1;
+  overflow-x: hidden;
+
+  .zi {
+    z-index: -1;
+  }
+  @media screen and (min-width: 800px) {
+    display: none;
+  }
+`;
+
+export const Page = styled.div`
+  .noscroll {
+    overflow: hidden;
+    height: 100vh;
   }
 `;
