@@ -76,8 +76,8 @@ function Home() {
 
   const generate = () => {
     setGenerateCount(generateCount + 1);
-    if (generateCount === 2) {
-      localStorage.setItem("gen", 2);
+    if (generateCount === 3) {
+      localStorage.setItem("gen", 3);
       // alert("You have reached the limit of 2 generated activities.");
     }
 
