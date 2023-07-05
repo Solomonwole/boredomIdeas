@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai'
 import { Link } from 'react-router-dom'
 import { toast, ToastContainer } from 'react-toastify'
 import { StyledAuthLayout } from '../../layout/AuthLayout'

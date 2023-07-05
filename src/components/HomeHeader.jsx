@@ -1,69 +1,79 @@
-import React, { useState } from "react";
-import { MobileMenu, StyledHeader2 } from "../pages/Home/Styled/Styled";
-import logo from "../assets/logo.svg";
-import { NavLink } from "react-router-dom";
-import { PageLayout } from "../layout/PageLayout";
-import { HiOutlineMenuAlt3 } from "react-icons/hi";
-import { IoClose } from "react-icons/io5";
+import {
+  AppBar,
+  Box,
+  Button,
+  Toolbar,
+  Typography,
+  Stack,
+  Avatar,
+  Container,
+} from "@mui/material";
+import React, { useContext, useState } from "react";
+import { Logo } from "./assets";
+import { useTheme } from "@mui/material/styles";
+import userContext from "../context/userContext";
+import { Link } from "react-router-dom";
+import UserModal from "./UserModal";
 
 function HeaderHeader() {
-  const [menu, setMenu] = useState(false);
+  const theme = useTheme();
+  const [open, setOpen] = useState(false);
+  // const [menu, setMenu] = useState(false);
+
+  const { userName } = useContext(userContext);
   return (
     <>
-      <StyledHeader2>
-        <PageLayout>
-          <header>
-            <img src={logo} alt="Boredom Ideas" />
-            <div className="navMenu">
-              <ul>
-                <li>
-                  <NavLink to="/">Home</NavLink>
-                </li>
-                <li>
-                  <NavLink to="/donate">Donate</NavLink>
-                </li>
-                <li>
-                  <NavLink to="/login">Login</NavLink>
-                </li>
-                <li>
-                  <NavLink to="/register">
-                    <button>Create account</button>
-                  </NavLink>
-                </li>
-              </ul>
-            </div>
-            <div className="mobile-menu">
-              {!menu ? (
-                <HiOutlineMenuAlt3 onClick={() => setMenu(true)} />
+      <Box sx={{ flexGrow: 1 }}>
+        <AppBar position="fixed">
+          <Container>
+            <Toolbar
+              sx={{
+                background: theme.palette.primary.main,
+                display: "flex",
+                justifyContent: "space-between",
+                alignItems: "center",
+                padding: "10px",
+              }}
+            >
+              <Box>
+                <Link to="/">
+                  <Logo />
+                </Link>
+              </Box>
+
+              {userName !== "" ? (
+                <Box>
+                  <Stack direction="row" spacing={2} alignItems="center">
+                    <Typography
+                      variant="body1"
+                      color={theme.palette.textPrimary.main}
+                      sx={{
+                        textTransform: "capitalize",
+                      }}
+                    >
+                      {userName}
+                    </Typography>
+                    <Avatar></Avatar>
+                  </Stack>
+                </Box>
               ) : (
-                <IoClose onClick={() => setMenu(false)} />
+                <Button
+                  variant="contained"
+                  sx={{
+                    display: { xs: "none", sm: "flex" },
+                  }}
+                  onClick={() => {
+                    setOpen(true);
+                  }}
+                >
+                  Get Started
+                </Button>
               )}
-            </div>
-          </header>
-        </PageLayout>
-      </StyledHeader2>
-      {menu && (
-        <>
-          <MobileMenu>
-            <ul>
-              <li>
-                <NavLink to="/">Home</NavLink>
-              </li>
-              <li>
-              <NavLink to="/donate">Donate</NavLink>
-              </li>
-              <li>
-                <NavLink to="/login">Login</NavLink>
-              </li>
-              <li>
-                <NavLink to="/register">
-                  <button>Create account</button>
-                </NavLink>
-              </li>
-            </ul>
-          </MobileMenu>
-        </>
-      )}
+            </Toolbar>
+          </Container>
+        </AppBar>
+      </Box>
+      <UserModal open={open} setOpen={setOpen} />
     </>
   );
 }

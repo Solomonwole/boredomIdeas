@@ -1,17 +1,18 @@
-import { Skeleton } from "@mui/material";
+import {
+  Box,
+  Button,
+  Container,
+  Divider,
+  Skeleton,
+  Typography,
+} from "@mui/material";
 import axios from "axios";
-import React, { useEffect, useState } from "react";
-import Header from "../../components/Header";
+import React, { useState } from "react";
 import VerifyModal from "../../components/Modal";
 import { PageLayout } from "../../layout/PageLayout";
-import { StyledDashboard } from "../../styles/Styled";
 import { ToastContainer, toast } from "react-toastify";
-import {
-  ActivityGen,
-  Ads,
-  DashLeft,
-  StyledSection,
-} from "../Home/Styled/Styled";
+import BtnB from "../../assets/btn.png";
+
 import {
   FacebookIcon,
   FacebookShareButton,
@@ -22,6 +23,8 @@ import {
   WhatsappIcon,
   WhatsappShareButton,
 } from "react-share";
+import theme from "../../mui/theme";
+import { maxWidth } from "@mui/system";
 
 function Dashboard() {
   const [activity, setActivity] = useState(null);
@@ -30,55 +33,6 @@ function Dashboard() {
   const [generateCount, setGenerateCount] = useState(0);
   const text = "Share with your friends 😉";
   const username = localStorage.getItem("username");
-
-  useEffect(() => {
-    window.scrollTo(0, 0);
-
-    // 300 X 100
-    const script = document.createElement("script");
-    script.src = "https://poweredby.jads.co/js/jads.js";
-    script.async = true;
-    script.setAttribute("data-cfasync", "false");
-    document.body.appendChild(script);
-
-    (window.adsbyjuicy = window.adsbyjuicy || []).push({ adzone: 1010462 });
-
-    // 300 x 100
-
-    // 300 x 250 Video Ads
-
-    const scriptv = document.createElement("script");
-    scriptv.src = "https://poweredby.jads.co/js/jads.js";
-    scriptv.async = true;
-    scriptv.setAttribute("data-cfasync", "false");
-    document.body.appendChild(scriptv);
-
-    (window.adsbyjuicy = window.adsbyjuicy || []).push({ adzone: 1010463 });
-
-    // 300 x 250 Video Ads
-
-    const intervalId = setInterval(() => {
-      (window.adsbyjuicy = window.adsbyjuicy || []).push({ adzone: 1010462 });
-      (window.adsbyjuicy = window.adsbyjuicy || []).push({ adzone: 1010463 });
-    }, 60000);
-
-    return () => clearInterval(intervalId);
-
-    // 300 X 100
-  }, []);
-
-  // const logout = () => {
-  //   axios
-  //     .get("https://user-profile-api.onrender.com/logout")
-  //     .then((response) => {
-  //       console.log(response.status);
-  //       console.log("Logged Out");
-  //     })
-  //     .catch((error) => {
-  //       console.log(error);
-  //       console.log("error");
-  //     });
-  // };
 
   const generate = () => {
     setLoading(true);
@@ -102,115 +56,196 @@ function Dashboard() {
 
   return (
     <>
-      <PageLayout>
-        <Header />
-      </PageLayout>
+      <Box sx={{ background: theme.palette.primary.main }}>
+        <Container maxWidth="lg">
+          <Box
+            sx={{
+              background: theme.palette.primary.main,
+              minHeight: { xs: "80vh", sm: "100vh" },
+              width: "100%",
+              paddingTop: "130px",
+              paddingBottom: "120px",
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+          >
+            {!activity ? (
+              <>
+                <Typography
+                  variant="h1"
+                  color="textPrimary.main"
+                  align="center"
+                  width={{ sm: "50%" }}
+                  mb={5}
+                >
+                  Generate an Idea
+                </Typography>
 
-      <StyledSection color top fulls>
-        <PageLayout>
-          <StyledDashboard>
-            <DashLeft>
-              {!activity ? (
-                <>
-                <h1>Hi, {username}</h1>
-                <br />
-                  <h2>
-                    Let's Get Started, <br />
-                    Shall we?
-                  </h2>
-                  <button onClick={generate}>
-                    {loading ? <div className="loader"></div> : "GENERATE IDEA"}
-                  </button>
-                </>
-              ) : (
-                <>
-                  <ActivityGen don>
-                    <div className="title">CATEGORY</div>
-                    <div className="answer">
-                      {!loading ? (
-                        <>{activity.type}</>
-                      ) : (
-                        <Skeleton
-                          variant="rectangular"
-                          width={"90%"}
-                          height={"40px"}
-                        />
-                      )}
-                    </div>
-                    <div className="title">ACTIVITY IDEA</div>
-                    <div className="answer">
-                      {!loading ? (
-                        <>{activity.activity}</>
-                      ) : (
-                        <Skeleton
-                          variant="rectangular"
-                          width={"90%"}
-                          height={"40px"}
-                        />
-                      )}
-                    </div>
-                    <div className="title">PARTICIPANTS</div>
-                    <div className="answer none">
-                      {!loading ? (
-                        <>{activity.participants}</>
-                      ) : (
-                        <Skeleton
-                          variant="rectangular"
-                          width={"90%"}
-                          height={"40px"}
-                        />
-                      )}
-                    </div>
-                  </ActivityGen>
-                  <button onClick={generate}>
-                    {loading ? <div className="loader"></div> : "REGENERATE"}
-                  </button>
-                </>
-              )}
+                <Box position="relative" mt={4}>
+                  <img
+                    src={BtnB}
+                    alt=""
+                    style={{
+                      position: "absolute",
+                      marginTop: "-20px",
+                      marginLeft: "-20px",
+                    }}
+                  />
+                  <Button
+                    variant="contained"
+                    color="primary"
+                    onClick={generate}
+                    sx={{
+                      height: "50px",
+                      width: "200px",
+                    }}
+                  >
+                    {loading ? <div className="loader"></div> : "Get Started"}
+                  </Button>
+                </Box>
+              </>
+            ) : (
+              <>
+                <Box
+                  sx={{
+                    background: "#212327",
+                    borderRadius: "20px",
+                    display: "flex",
+                    flexDirection: "column",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    width: "90%",
+                    maxWidth: "691px",
+                    padding: "20px 0",
+                  }}
+                >
+                  <Box
+                    mb={2}
+                    sx={{
+                      padding: "0 10px",
+                    }}
+                  >
+                    <Typography
+                      variant="h3"
+                      color={theme.palette.textPrimary.main}
+                      sx={{
+                        textTransform: "uppercase",
+                      }}
+                      align="center"
+                    >
+                      CATEGORY
+                    </Typography>
+                    <Typography
+                      mt={2}
+                      mb={2}
+                      variant="body1"
+                      color={theme.palette.textPrimary.main}
+                      sx={{
+                        textTransform: "capitalize",
+                      }}
+                      align="center"
+                    >
+                      {activity.type}
+                    </Typography>
+                  </Box>
+                  <Divider
+                    sx={{
+                      border: "1px solid rgba(47, 47, 47, 0.442)",
+                      minWidth: "100%",
+                    }}
+                  />
 
-              {/* ADS  */}
+                  <Box
+                    mb={2}
+                    sx={{
+                      padding: "0 10px",
+                    }}
+                  >
+                    <Typography
+                      mt={2}
+                      variant="h3"
+                      color={theme.palette.textPrimary.main}
+                      sx={{
+                        textTransform: "uppercase",
+                      }}
+                      align="center"
+                    >
+                      ACTIVITY IDEA
+                    </Typography>
+                    <Typography
+                      mt={2}
+                      mb={2}
+                      variant="body1"
+                      color={theme.palette.textPrimary.main}
+                      sx={{
+                        textTransform: "capitalize",
+                      }}
+                      align="center"
+                    >
+                      {activity.activity}
+                    </Typography>
+                  </Box>
+                  <Divider
+                    sx={{
+                      border: "1px solid rgba(47, 47, 47, 0.442)",
+                      minWidth: "100%",
+                    }}
+                  />
 
-              <PageLayout>
-                <Ads notop>
-                  <ins
-                    id="1010462"
-                    data-width="300"
-                    data-height="112"
-                    className="zi"
-                  ></ins>
-                  <ins
-                    id="1010462"
-                    data-width="300"
-                    data-height="112"
-                    style={{ zIndex: -1 }}
-                    className="zi"
-                  ></ins>
-                </Ads>
-                <Ads notop>
-                  <ins
-                    id="1010462"
-                    data-width="300"
-                    data-height="112"
-                    className="zi"
-                  ></ins>
-                  <ins
-                    id="1010462"
-                    data-width="300"
-                    data-height="112"
-                    style={{ zIndex: -1 }}
-                    className="zi"
-                  ></ins>
-                </Ads>
-              </PageLayout>
+                  <Box
+                    mb={2}
+                    sx={{
+                      padding: "0 10px",
+                    }}
+                  >
+                    <Typography
+                      mt={2}
+                      variant="h3"
+                      color={theme.palette.textPrimary.main}
+                      sx={{
+                        textTransform: "uppercase",
+                      }}
+                      align="center"
+                    >
+                      PARTICIPANTS
+                    </Typography>
+                    <Typography
+                      mt={2}
+                      variant="body1"
+                      color={theme.palette.textPrimary.main}
+                      sx={{
+                        textTransform: "capitalize",
+                      }}
+                      align="center"
+                    >
+                      {activity.participants}
+                    </Typography>
+                  </Box>
+                </Box>
 
-              {/* ADS  */}
-            </DashLeft>
-            <DashLeft></DashLeft>
-          </StyledDashboard>
-        </PageLayout>
-      </StyledSection>
+                <Button
+                  sx={{
+                    marginTop: "90px",
+                    height: "50px",
+                    width: "200px",
+                  }}
+                  variant="contained"
+                  color="primary"
+                  onClick={generate}
+                >
+                  {loading ? <div className="loader"></div> : "Re-Generate"}
+                </Button>
+              </>
+            )}
+          </Box>
+        </Container>
+      </Box>
+
       {modal && (
         <VerifyModal
+          open={modal}
           closeModal={() => setModal(false)}
           text={text}
           title="ENJOYING? 🤪"
