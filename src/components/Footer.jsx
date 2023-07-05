@@ -86,6 +86,12 @@ function Footer() {
             </Stack>
           </Grid>
         </Grid>
+
+        <Box mt={5}>
+          <Typography variant="caption" color="rgba(1, 1, 1, 0.552)">
+            © 2023 BoredomIdeas. Copyright and All rights reserved.
+          </Typography>
+        </Box>
       </Container>
     </Box>
   );

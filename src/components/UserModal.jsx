@@ -11,6 +11,8 @@ import theme from "../mui/theme";
 import { Stack, TextField } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import userContext from "../context/userContext";
+import { getFirestore, doc, setDoc, updateDoc, arrayUnion } from "firebase/firestore";
+
 
 const style = {
   position: "absolute",
@@ -29,6 +31,26 @@ export default function UserModal({ open, setOpen }) {
   const navigate = useNavigate();
   const handleClose = () => setOpen(false);
   const { userName, setUserName } = useContext(userContext);
+
+  const handleForm = async () => {
+    if (userName !== "") {
+      navigate("/dashboard");
+      handleClose();
+
+      try {
+        const firestore = getFirestore(); // Get Firestore instance
+        const usersCollectionRef = doc(firestore, "users", "all"); // Reference the "users" collection and "all" document
+
+        // Update the "user" field with arrayUnion to add the username
+        await updateDoc(usersCollectionRef, {
+          user: arrayUnion(userName),
+        });
+      } catch (error) {
+        // Handle any errors here
+        console.error("Error saving username:", error);
+      }
+    }
+  };
   return (
     <div>
       <Modal
@@ -97,12 +119,7 @@ export default function UserModal({ open, setOpen }) {
                   webkitBoxShadow: "none",
                   mozBoxShadow: "none",
                 }}
-                onClick={() => {
-                  if (userName !== "") {
-                    navigate("/dashboard");
-                    handleClose();
-                  }
-                }}
+                onClick={handleForm}
               >
                 Continue
               </Button>

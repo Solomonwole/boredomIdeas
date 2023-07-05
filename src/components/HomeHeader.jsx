@@ -61,6 +61,9 @@ function HeaderHeader() {
                   variant="contained"
                   sx={{
                     display: { xs: "none", sm: "flex" },
+                    boxShadow: "none",
+                    webkitBoxShadow: "none",
+                    mozBoxShadow: "none",
                   }}
                   onClick={() => {
                     setOpen(true);

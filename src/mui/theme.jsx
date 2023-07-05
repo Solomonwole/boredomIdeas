@@ -59,6 +59,8 @@ const theme = createTheme({
         root: {
           borderRadius: "32px",
           textTransform: "none",
+          height: "50px",
+          width: "200px",
         },
         outlined: {
           color: "#F4F4F4",
