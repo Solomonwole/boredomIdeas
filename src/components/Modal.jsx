@@ -33,7 +33,7 @@ function VerifyModal({ open, closeModal, text, title, content }) {
     <>
       <Modal
         open={open}
-        onClose={handleClose}
+        
         closeAfterTransition
         slots={{ backdrop: Backdrop }}
         slotProps={{

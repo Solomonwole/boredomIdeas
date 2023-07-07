@@ -60,7 +60,7 @@ export default function UserModal({ open, setOpen }) {
     <div>
       <Modal
         open={open}
-        onClose={handleClose}
+        
         closeAfterTransition
         slots={{ backdrop: Backdrop }}
         slotProps={{
