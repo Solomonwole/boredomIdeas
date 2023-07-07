@@ -115,6 +115,7 @@ export default function UserModal({ open, setOpen }) {
                 }}
                 required
               />
+              
               <Button
                 variant="contained"
                 color="primary"
