@@ -11,8 +11,13 @@ import theme from "../mui/theme";
 import { Stack, TextField } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import userContext from "../context/userContext";
-import { getFirestore, doc, setDoc, updateDoc, arrayUnion } from "firebase/firestore";
-
+import {
+  getFirestore,
+  doc,
+  setDoc,
+  updateDoc,
+  arrayUnion,
+} from "firebase/firestore";
 
 const style = {
   position: "absolute",
@@ -90,6 +95,7 @@ export default function UserModal({ open, setOpen }) {
                 alignItems: "center",
                 justifyContent: "center",
               }}
+              onSubmit={handleForm}
             >
               <TextField
                 label="&nbsp;&nbsp;&nbsp; Set Your Username"
@@ -107,6 +113,7 @@ export default function UserModal({ open, setOpen }) {
                     borderRadius: "32px",
                   },
                 }}
+                required
               />
               <Button
                 variant="contained"
@@ -119,7 +126,7 @@ export default function UserModal({ open, setOpen }) {
                   webkitBoxShadow: "none",
                   mozBoxShadow: "none",
                 }}
-                onClick={handleForm}
+                type="submit"
               >
                 Continue
               </Button>
