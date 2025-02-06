@@ -1,15 +1,7 @@
-import {
-	Box,
-	Button,
-	Container,
-	Divider,
-	Skeleton,
-	Typography,
-} from "@mui/material";
+import { Box, Button, Container, Divider, Typography } from "@mui/material";
 import axios from "axios";
 import React, { useState } from "react";
 import VerifyModal from "../../components/Modal";
-import { PageLayout } from "../../layout/PageLayout";
 import { ToastContainer, toast } from "react-toastify";
 import BtnB from "../../assets/btn.png";
 
@@ -24,7 +16,6 @@ import {
 	WhatsappShareButton,
 } from "react-share";
 import theme from "../../mui/theme";
-import { maxWidth } from "@mui/system";
 
 const AIML_API_URL = "https://api.aimlapi.com/v1/chat/completions";
 const API_KEY = "0e77e161ba2e4ec38fbe87c9b4bc9635";
@@ -35,7 +26,6 @@ function Dashboard() {
 	const [modal, setModal] = useState(false);
 	const [generateCount, setGenerateCount] = useState(0);
 	const text = "Share with your friends 😉";
-	const username = localStorage.getItem("username");
 
 	const generate = async () => {
 		setLoading(true);
