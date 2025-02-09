@@ -25,7 +25,6 @@ const style = {
 	borderRadius: "20px",
 	p: 4,
 };
-
 export default function UserModal({ open, setOpen }) {
 	const navigate = useNavigate();
 	const handleClose = () => setOpen(false);
